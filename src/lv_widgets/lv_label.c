@@ -1129,6 +1129,9 @@ void lv_label_refr_text(lv_obj_t * label)
         lv_anim_init(&a);
         lv_anim_set_var(&a, label);
         lv_anim_set_repeat_count(&a, LV_ANIM_REPEAT_INFINITE);
+        lv_anim_set_playback_delay(&a, (((lv_font_get_glyph_width(font, ' ', ' ') + letter_space) * 1000) /
+                                        ext->anim_speed) * 20);
+        lv_anim_set_repeat_delay(&a, 1000);
 
         bool hor_anim = false;
         if(size.x > lv_area_get_width(&txt_coords)) {
